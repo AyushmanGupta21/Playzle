@@ -1,0 +1,150 @@
+.page {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 24px;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 32px;
+}
+
+.title {
+    font-size: 20px;
+    background: linear-gradient(135deg, var(--color-gold), #d97706);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 6px;
+}
+
+.subtitle {
+    color: var(--color-text-secondary);
+    font-size: 14px;
+}
+
+.toast {
+    padding: 14px 20px;
+    border-radius: var(--radius-md);
+    margin-bottom: 20px;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.toastSuccess {
+    background: rgba(16, 185, 129, 0.1);
+    border: 1px solid #10b981;
+    color: #6ee7b7;
+}
+
+.toastError {
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid #ef4444;
+    color: #fca5a5;
+}
+
+.tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 28px;
+}
+
+.tab {
+    padding: 8px 20px;
+    border-radius: 99px;
+    border: 1px solid var(--color-border);
+    background: transparent;
+    color: var(--color-text-secondary);
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.2s;
+}
+
+.tab:hover {
+    background: var(--color-surface);
+}
+
+.tabActive {
+    background: var(--color-primary) !important;
+    border-color: var(--color-primary) !important;
+    color: #fff !important;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 20px;
+}
+
+.itemCard {
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    position: relative;
+}
+
+.itemCard:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+}
+
+.owned {
+    opacity: 0.7;
+}
+
+.rarityBadge {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.itemImage {
+    font-size: 56px;
+    text-align: center;
+    padding: 8px 0;
+    animation: float 3s ease-in-out infinite;
+}
+
+.itemInfo {
+    flex: 1;
+}
+
+.itemName {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.itemDesc {
+    font-size: 12px;
+    color: var(--color-text-secondary);
+    line-height: 1.5;
+}
+
+.itemFooter {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 4px;
+}
+
+.ownedTag {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--color-success);
+}
+
+.loading {
+    text-align: center;
+    color: var(--color-text-secondary);
+    padding: 60px;
+    font-size: 18px;
+}

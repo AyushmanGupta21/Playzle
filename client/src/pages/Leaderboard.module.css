@@ -1,0 +1,133 @@
+.page {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 24px;
+}
+
+.header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 36px;
+    gap: 20px;
+}
+
+.title {
+    font-size: 20px;
+    background: linear-gradient(135deg, var(--color-gold), #d97706);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 8px;
+}
+
+.subtitle {
+    color: var(--color-text-secondary);
+    font-size: 14px;
+}
+
+.myRank {
+    background: linear-gradient(135deg, rgba(124, 58, 237, 0.2), rgba(124, 58, 237, 0.05));
+    border: 1px solid var(--color-primary);
+    border-radius: var(--radius-lg);
+    padding: 16px 24px;
+    text-align: center;
+    min-width: 120px;
+    animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.myRankLabel {
+    display: block;
+    font-size: 11px;
+    color: var(--color-text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.myRankValue {
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--color-primary);
+}
+
+.table {
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+}
+
+.tableHeader {
+    display: grid;
+    grid-template-columns: 80px 1fr 140px 140px;
+    padding: 14px 24px;
+    background: var(--color-bg-elevated);
+    border-bottom: 1px solid var(--color-border);
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--color-text-muted);
+}
+
+.row {
+    display: grid;
+    grid-template-columns: 80px 1fr 140px 140px;
+    padding: 16px 24px;
+    border-bottom: 1px solid var(--color-border);
+    align-items: center;
+    transition: background 0.15s;
+}
+
+.row:last-child {
+    border-bottom: none;
+}
+
+.row:hover {
+    background: var(--color-surface);
+}
+
+.topRow {
+    background: rgba(245, 158, 11, 0.04);
+}
+
+.myRow {
+    background: rgba(124, 58, 237, 0.08) !important;
+    border-left: 3px solid var(--color-primary);
+}
+
+.rank {
+    font-size: 20px;
+    font-weight: 800;
+}
+
+.username {
+    font-weight: 600;
+    font-size: 15px;
+}
+
+.crown {
+    font-size: 16px;
+}
+
+.youTag {
+    color: var(--color-primary);
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.score {
+    color: var(--color-gold-light);
+    font-weight: 700;
+}
+
+.coins {
+    color: var(--color-text-secondary);
+}
+
+.loading,
+.empty {
+    text-align: center;
+    color: var(--color-text-secondary);
+    padding: 60px;
+    font-size: 16px;
+}

@@ -1,36 +1,77 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ⚔️ Playzle — Gamified Coding Platform
 
-## Getting Started
+A full-stack educational platform where you learn to code by playing a 2D RPG. Write real code to move your hero, pass challenges, earn coins, and compete on a global leaderboard.
 
-First, run the development server:
+## 🏗️ Tech Stack
 
+| Layer | Tech |
+|-------|------|
+| Frontend | React 19 + TypeScript + Vite |
+| Game Engine | Phaser 3 |
+| Code Editor | Monaco Editor (VS Code engine) |
+| JS Sandbox | Web Workers (5s auto-kill) |
+| Python Sandbox | Pyodide (WebAssembly) |
+| Backend | Node.js + Express + TypeScript |
+| Database | PostgreSQL (ACID economy, JSONB loadouts) |
+| Cache / Leaderboard | Redis Sorted Sets (O(log N) rankings) |
+| Auth | JWT + bcrypt |
+
+## 🚀 Getting Started
+
+### 1. Start Infrastructure
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+cd server
+docker compose up -d
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. Start Backend (port 3001)
+```bash
+cd server
+npm install
+npm run dev
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 3. Start Frontend (port 5173)
+```bash
+cd client
+npm install
+npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Open **http://localhost:5173** in your browser.
 
-## Learn More
+## 🎮 How It Works
 
-To learn more about Next.js, take a look at the following resources:
+1. **Register** your hero and enter the RPG world
+2. **Navigate** with WASD / Arrow keys
+3. **Walk into glowing checkpoints** → Monaco IDE opens
+4. **Write code** (JavaScript or Python) and submit
+5. **Pass the quiz** (70% threshold) → coins awarded
+6. **Buy skins** in The Bazaar with your earned coins
+7. **Compete** on the real-time Redis-powered leaderboard
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📁 Project Structure
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```
+playzle/
+├── client/          # Vite + React + TypeScript frontend
+│   └── src/
+│       ├── game/    # Phaser 3 scenes & EventBridge
+│       ├── components/  # MonacoIDE, Quiz, Shop, Leaderboard
+│       ├── pages/   # Route pages
+│       ├── store/   # Zustand global state
+│       └── workers/ # JS execution sandbox (Web Worker)
+└── server/          # Node.js + Express backend
+    ├── src/
+    │   ├── routes/  # auth, economy, leaderboard, challenge
+    │   ├── db/      # PostgreSQL pool
+    │   └── redis/   # Redis client
+    └── migrations/  # SQL schema (auto-applied via Docker)
+```
 
-## Deploy on Vercel
+## 🔐 Security
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Server-side validation**: All code submissions are re-executed on the server using Node.js `vm` module
+- **Idempotent purchases**: UUID idempotency keys prevent double-charging
+- **ACID transactions**: Coin deductions use PostgreSQL transactions with `FOR UPDATE` row locking
+- **Sandbox isolation**: JS runs in Web Workers (main thread never blocked), Python via Pyodide WASM

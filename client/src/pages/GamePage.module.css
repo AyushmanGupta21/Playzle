@@ -1,0 +1,75 @@
+.page {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.gameHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+    padding: 16px 20px;
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+}
+
+.questInfo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.questLabel {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--color-text-secondary);
+    white-space: nowrap;
+}
+
+.questBar {
+    width: 160px;
+    height: 8px;
+    background: var(--color-bg-elevated);
+    border-radius: 99px;
+    overflow: hidden;
+}
+
+.questFill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+    border-radius: 99px;
+    transition: width 0.5s ease;
+}
+
+.questCount {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--color-primary);
+    white-space: nowrap;
+}
+
+.instructions {
+    display: flex;
+    gap: 20px;
+    font-size: 12px;
+    color: var(--color-text-secondary);
+    flex-wrap: wrap;
+}
+
+.instructions kbd {
+    background: var(--color-bg-elevated);
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    padding: 2px 6px;
+    font-family: monospace;
+    font-size: 11px;
+    color: var(--color-text-primary);
+}
