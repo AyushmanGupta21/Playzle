@@ -8,17 +8,22 @@ import styles from './PhaserGame.module.css';
 export default function PhaserGame() {
     const containerRef = useRef<HTMLDivElement>(null);
     const gameRef = useRef<Phaser.Game | null>(null);
-    const { setShowIDE } = useGameStore();
+    const setShowIDE = useGameStore((s) => s.setShowIDE);
+    const setShowIDERef = useRef(setShowIDE);
+    setShowIDERef.current = setShowIDE;
 
     useEffect(() => {
-        if (!containerRef.current || gameRef.current) return;
+        // Guard: only create once
+        if (gameRef.current) return;
+        const container = containerRef.current;
+        if (!container) return;
 
         const config: Phaser.Types.Core.GameConfig = {
-            type: Phaser.AUTO,
-            parent: containerRef.current,
-            width: containerRef.current.clientWidth || 960,
-            height: 520,
-            backgroundColor: '#0f1a0f',
+            type: Phaser.CANVAS,
+            parent: container,
+            width: container.clientWidth || 960,
+            height: 540,
+            backgroundColor: '#64B8FF',
             physics: {
                 default: 'arcade',
                 arcade: { gravity: { x: 0, y: 0 }, debug: false },
@@ -28,13 +33,17 @@ export default function PhaserGame() {
                 mode: Phaser.Scale.FIT,
                 autoCenter: Phaser.Scale.CENTER_BOTH,
             },
+            render: {
+                antialias: false,
+                pixelArt: false,
+            },
         };
 
         gameRef.current = new Phaser.Game(config);
 
-        // Bridge: Phaser event → React state
+        // Bridge: Phaser → React
         eventBridge.on(EVENTS.CHECKPOINT_REACHED, (checkpointId: string) => {
-            setShowIDE(true, checkpointId);
+            setShowIDERef.current(true, checkpointId);
         });
 
         return () => {
@@ -42,12 +51,7 @@ export default function PhaserGame() {
             gameRef.current?.destroy(true);
             gameRef.current = null;
         };
-    }, [setShowIDE]);
-
-    // Resume game from outside
-    const resumeGame = () => {
-        eventBridge.emit(EVENTS.GAME_RESUME);
-    };
+    }, []); // Empty deps — Phaser mounts once
 
     return (
         <div className={styles.gameWrapper}>
@@ -55,5 +59,3 @@ export default function PhaserGame() {
         </div>
     );
 }
-
-export { };

@@ -1,17 +1,20 @@
+/* ── Navbar ── */
 .navbar {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 32px;
-    height: 64px;
-    background: rgba(10, 14, 26, 0.95);
-    backdrop-filter: blur(20px);
-    border-bottom: 1px solid var(--color-border);
+    padding: 0 28px;
+    height: 62px;
+    background: linear-gradient(90deg, #1a0533 0%, #0f1a2e 50%, #1a1500 100%);
+    border-bottom: 3px solid #F59E0B;
+    box-shadow: 0 2px 0 #92400E, 0 4px 20px rgba(0, 0, 0, 0.5);
     position: sticky;
     top: 0;
     z-index: 50;
+    backdrop-filter: blur(12px);
 }
 
+/* ── Logo ── */
 .logo {
     display: flex;
     align-items: center;
@@ -20,17 +23,22 @@
 }
 
 .logoIcon {
-    font-size: 24px;
+    font-size: 22px;
+    animation: float 3s ease-in-out infinite;
+    filter: drop-shadow(0 0 8px rgba(245, 158, 11, 0.7));
 }
 
 .logoText {
-    font-size: 14px;
-    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+    font-size: 13px;
+    letter-spacing: 3px;
+    background: linear-gradient(135deg, #FCD34D, #F59E0B, #FBBF24);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    letter-spacing: 2px;
+    text-shadow: none;
+    filter: drop-shadow(0 0 6px rgba(245, 158, 11, 0.4));
 }
 
+/* ── Nav links ── */
 .links {
     display: flex;
     align-items: center;
@@ -41,25 +49,31 @@
     display: flex;
     align-items: center;
     gap: 6px;
-    padding: 8px 16px;
-    border-radius: var(--radius-md);
-    text-decoration: none;
-    color: var(--color-text-secondary);
-    font-weight: 500;
+    padding: 7px 16px;
+    border-radius: 8px;
+    border: 1px solid transparent;
+    color: #94a3b8;
     font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
     transition: all 0.2s;
+    white-space: nowrap;
 }
 
 .link:hover {
-    color: var(--color-text-primary);
-    background: var(--color-surface);
+    background: rgba(245, 158, 11, 0.1);
+    border-color: rgba(245, 158, 11, 0.3);
+    color: #FCD34D;
 }
 
 .active {
-    color: var(--color-text-primary) !important;
-    background: var(--color-surface) !important;
+    background: linear-gradient(135deg, rgba(245, 158, 11, 0.2), rgba(245, 158, 11, 0.05));
+    border-color: rgba(245, 158, 11, 0.5) !important;
+    color: #FCD34D !important;
+    box-shadow: 0 0 12px rgba(245, 158, 11, 0.2);
 }
 
+/* ── Right side ── */
 .right {
     display: flex;
     align-items: center;
@@ -73,9 +87,13 @@
 }
 
 .username {
-    font-size: 14px;
-    font-weight: 500;
-    color: var(--color-text-secondary);
+    font-size: 13px;
+    font-weight: 600;
+    color: #e2e8f0;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 99px;
+    padding: 5px 14px;
 }
 
 .authButtons {
